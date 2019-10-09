@@ -1,5 +1,6 @@
 ﻿/* UserInterface.cs
  * Author: Rod Howell
+ * Modified by: Robert Baumgarten
  */
 using System;
 using System.Collections.Generic;
@@ -94,6 +95,26 @@ namespace Ksu.Cis300.NameLookup
                 uxFrequency.Text = "";
                 uxRank.Text = "";
             }
+        }
+
+        /// <summary>
+        /// Removes the entered name from the tree list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UxRemove_Click(object sender, EventArgs e)
+        {
+            string name = uxName.Text.Trim().ToUpper();
+            if (_nameInformation.Remove(name))
+            {
+                _nameInformation.Drawing.Show();
+            }
+            else
+            {
+                MessageBox.Show("Name not found.");
+            }
+            uxFrequency.Text = "";
+            uxRank.Text = "";
         }
     }
 }
